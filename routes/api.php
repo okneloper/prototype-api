@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(['middleware' => 'auth:sanctum'], function (\Illuminate\Routing\Router $router) {
+    $router->post('/delivery/cost', [\App\Http\Controllers\DeliveryCostController::class, 'calculate']);
+});
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
