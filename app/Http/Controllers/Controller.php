@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -15,11 +16,17 @@ class Controller extends BaseController
 
     /**
      * Returns a 'Successful' response
-     * @param string|null $message
-     * @return Response
      */
     public function success(array $data = null): JsonResponse
     {
         return new JsonResponse($data);
+    }
+
+    /**
+     * Returns a 'Created' response
+     */
+    public function created(array|Jsonable $data = null): JsonResponse
+    {
+        return new JsonResponse($data, 201);
     }
 }
