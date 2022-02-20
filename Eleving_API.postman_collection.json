@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "c695a9f3-e8cd-407c-b6b7-70a332cbb8aa",
+		"name": "Eleving API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Order",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|mVIWH2VgQlWJpt7JfFHTUCkxwZVBFtBcLj75tNJT",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/api/orders/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"orders",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Orders",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|mVIWH2VgQlWJpt7JfFHTUCkxwZVBFtBcLj75tNJT",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/api/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Order",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|RyBbpYpNUqCUFz3QaDgMaY5SaKj5bbnz1s5HI43B",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"postman@exmaple.com\",\r\n    \"phone\": \"777 888 119\",\r\n    \"address\": {\r\n        \"city\": \"Riga\",\r\n        \"line1\": \"Manual order\",\r\n        \"line2\": null,\r\n        \"country\": \"LV\",\r\n        \"postcode\": \"LV-1011\"\r\n    },\r\n    \"items\": [\r\n        {\r\n            \"sku\": \"555\"\r\n        },\r\n        {\r\n            \"sku\": \"666\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate delivery cost",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|RyBbpYpNUqCUFz3QaDgMaY5SaKj5bbnz1s5HI43B",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\": {\r\n        \"city\": \"Riga\",\r\n        \"line1\": \"Manual order\",\r\n        \"line2\": null,\r\n        \"country\": \"LV\",\r\n        \"postcode\": \"LV-1011\"\r\n    },\r\n    \"items\": [\r\n        {\r\n            \"sku\": \"555\"\r\n        },\r\n        {\r\n            \"sku\": \"666\"\r\n        },        \r\n        {\r\n            \"sku\": \"777\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/delivery/cost",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"delivery",
+						"cost"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
