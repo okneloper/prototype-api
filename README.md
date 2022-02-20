@@ -1,7 +1,10 @@
 # Installation
 
 ## Install dependencies 
-Docker is required to run the app. 
+Docker is required to run the app. The application was tsted on 
+[Laravel Sail](https://laravel.com/docs/9.x/sail).  
+
+NB. Laravel Sail is supported on macOS, Linux, and Windows (via WSL2).
 
 Cd into the project directory and run the following command to 
 install the dependencies using a PHP8.1 docker container. PHP8.1 is the version 
@@ -52,4 +55,5 @@ Controllers can be found in `app/Http/Controllers`.
 
 Tests reside in `tests/Feature`. 
 
-`Eleving API.postman_collection.json` is a Postman collection (v2.1) of some sample requests.
+`Eleving API.postman_collection.json` is a Postman collection (v2.1) of 
+some sample requests.
