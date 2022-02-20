@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\Address;
 use App\Models\ItemList;
 use App\Models\Order;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Orders repository
@@ -26,5 +27,21 @@ class Orders
         $order->save();
 
         return $order;
+    }
+
+    /**
+     * Returns all orders
+     */
+    public function all(): Collection
+    {
+        return Order::all();
+    }
+
+    /**
+     * Finds an order by Id
+     */
+    public function find($order_id): Order
+    {
+        return Order::query()->findOrFail($order_id);
     }
 }

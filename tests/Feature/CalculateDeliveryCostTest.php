@@ -13,6 +13,16 @@ class CalculateDeliveryCostTest extends TestCase
         $this->postJson('/api/delivery/cost', $this->getValidPayload())->assertUnauthorized();
     }
 
+    public function testSalesCanNotAccess(): void
+    {
+        $this->asSales()->postJson('/api/delivery/cost', $this->getValidPayload())->assertForbidden();
+    }
+
+    public function testCourierCanNotAccess(): void
+    {
+        $this->asCourier()->postJson('/api/delivery/cost', $this->getValidPayload())->assertForbidden();
+    }
+
     /**
      * Successful request
      */

@@ -12,4 +12,14 @@ abstract class TestCase extends BaseTestCase
     {
         return $this->withToken('1|RyBbpYpNUqCUFz3QaDgMaY5SaKj5bbnz1s5HI43B');
     }
+
+    protected function asSales(): TestCase
+    {
+        return $this->withToken('2|mVIWH2VgQlWJpt7JfFHTUCkxwZVBFtBcLj75tNJT');
+    }
+
+    public function asCourier(): TestCase
+    {
+        return $this->withToken('3|gkw9V7bbQ6OgeFokLELSdhGBHG9eBVDLInnUwNoN');
+    }
 }
