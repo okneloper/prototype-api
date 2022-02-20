@@ -12,10 +12,10 @@ class DeliveryCostController extends Controller
     {
         $data = $request->all();
 
-        $cost = count($data['items']);
+        $cost = count($data['items']) * 1.11;
 
         return $this->success([
-            'cost' => $cost,
+            'cost' => number_format($cost, 2, '.', ''),
         ]);
     }
 }

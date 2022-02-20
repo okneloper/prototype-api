@@ -34,7 +34,7 @@ class CalculateDeliveryCostTest extends TestCase
         $response->assertStatus(200);
 
         $response->assertJsonFragment([
-            'cost' => 2,
+            'cost' => '2.22',
         ]);
     }
 
