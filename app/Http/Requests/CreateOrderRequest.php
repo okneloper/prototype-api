@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\Name;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateOrderRequest extends FormRequest
@@ -20,16 +21,31 @@ class CreateOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required',
-            'phone' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|regex:#^\+?[0-9 \-]+$#',
             'address' => 'required',
+            'address.name' => ['required', new Name()],
             'address.line1' => 'required',
             'address.city' => 'required',
             // a sample requirement for a Latvian postcode
             'address.postcode' => 'required|regex:#lv-[0-9]{4}#i',
-            'address.country' => 'required',
+            'address.country' => 'required|in:LV,UA',
             'items' => 'required|array',
-            'items.*.sku' => 'required',
+            'items.*.sku' => 'required|integer',
         ];
+    }
+
+    protected function prepareForValidation()
+    {
+        $address = $this->input('address');
+
+        foreach (['line1', 'line2', 'city'] as $field) {
+            $address[$field] = filter_var($address[$field], FILTER_SANITIZE_STRING);
+        }
+
+        // filter unvalidated fields
+        $this->merge([
+            'address' => $address,
+        ]);
     }
 }

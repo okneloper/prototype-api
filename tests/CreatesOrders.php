@@ -13,6 +13,7 @@ trait CreatesOrders
             'email' => 'john@exmaple.com',
             'phone' => '777 888 119',
             'address' => [
+                'name' => 'John Doe',
                 'line1' => '25 State Route',
                 'line2' => '',
                 'city' => 'Riga',
